@@ -1,0 +1,32 @@
+title 0.4 Uusi muistiinpano   Jon Pekkonen
+
+note over Selain:
+Käyttäjä kirjoittaa selaimen tekstikenttään 
+end note
+note over Selain:
+Käyttäjä painaa "save" nappulaa
+end note
+Selain->Palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over Palvelin:
+Palvelin tallentaa saamansa datan tietokantaan
+end note
+
+Palvelin-->Selain: Status 302, ja selaimen uudelleen ohjaus notes-sivulle
+
+
+
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+Palvelin-->Selain: notes (HTML-koodi)
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Palvelin-->Selain: main.css
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Palvelin-->Selain: main.js
+
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Palvelin-->Selain: Pyydetty data JSON muodossa
+
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/favicon.ico
+Palvelin-->Selain: HTML-tiedosto
+note over Selain
+Viimeksi saatua tiedostoa ei esitetä käyttäjälle
+end note

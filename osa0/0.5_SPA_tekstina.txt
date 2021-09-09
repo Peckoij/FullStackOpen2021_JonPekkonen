@@ -1,0 +1,30 @@
+title 0.5 Single Page App   Jon Pekkonen
+
+note over Selain:
+Käyttäjä klikkaa linkkiä sivulle
+end note
+Selain->Palvelin: https://studies.cs.helsinki.fi/exampleapp/spa
+Palvelin-->Selain: Sivun HTML-koodi
+note over Selain:
+spa-tiedosto pyytää css-tiedostoa
+end note
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Palvelin-->Selain: main.css
+note over Selain:
+spa-tiedosto pyytää spa.js tiedostoa
+end note
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+Palvelin-->Selain: spa.js
+note over Selain:
+spa.js rivi 31 : pyytää dataa palvelimelta
+end note
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Palvelin-->Selain: Pyydetty data JSON muodossa
+note over Selain:
+Luo HTML-lista saadusta datasta
+end note
+Selain->Palvelin: HTTP GET https://studies.cs.helsinki.fi/favicon.ico
+Palvelin-->Selain: HTML-tiedosto
+note over Selain
+Viimeksi saatua tiedostoa ei esitetä käyttäjälle
+end note
