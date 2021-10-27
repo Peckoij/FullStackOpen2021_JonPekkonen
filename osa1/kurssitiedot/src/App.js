@@ -65,9 +65,10 @@ const Total = (props) => {
 const Part = (props) => {
   console.log("Part function");
   console.log(props);
+  let {name, exercises} = props.part
   return (
     <p>
-      {props.part.name} {props.part.exercises}
+      {name} {exercises}
     </p>
   )
 }
