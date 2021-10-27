@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456' },
-    { name: 'Ada Lovelace', number: '39-44-5323523' },
-    { name: 'Dan Abramov', number: '12-43-234345' },
-    { name: 'Mary Poppendieck', number: '39-23-6423122' },
-    { name: 'Poppy Maryindieck', number: '49-29-1359122' }
-  ])
+  const [persons, setPersons] = useState([])
+
+  const hookPersons = () => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        console.log('promise fulfilled')
+        setPersons(response.data)
+      })
+  }
+  useEffect(hookPersons, [])
+
   //lomakkeen kenttien hallinta
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
@@ -44,8 +51,13 @@ const App = () => {
     console.log(event.target.value)
     setNewFilter(event.target.value)
   }
+  // makes it easier when passing handlers to PersonForm component
   const handlerObject = {
-    ap: addPerson, nName: newName, hNameC: handleNameChange, nNum: newNumber, hNumC: handleNumberChange
+    ap: addPerson, 
+    nName: newName, 
+    hNameC: handleNameChange, 
+    nNum: newNumber, 
+    hNumC: handleNumberChange
   }
 
   return (
