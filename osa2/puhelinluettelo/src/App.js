@@ -43,9 +43,7 @@ const App = () => {
     if (personIndex >= 0) {
       console.log("Updating number, old data:", persons[personIndex])
       console.log("Updating number, new data:", personObject)
-      // started to worry about updating persons phone number if it differs from one saved, maybe later
-      // returning to this at 2.18 
-      // so, if person exist ask if user wants to update number
+      // if person exist ask if user wants to update number
       if (window.confirm(`${persons[personIndex].name} is already added to phonebook, replace old number with a new one`)) {
         console.log(`Confirmed, update ${persons[personIndex].name}`);
         // temporary array to remove old data from local array, 
