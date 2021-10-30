@@ -12,9 +12,9 @@ const App = () => {
   const [successMessage, setSuccessMessage] = useState(null)
 
   const notiObject = {
-    errorMessage, 
-    setErrorMessage, 
-    successMessage, 
+    errorMessage,
+    setErrorMessage,
+    successMessage,
     setSuccessMessage
   }
 
@@ -88,6 +88,15 @@ const App = () => {
             setSuccessMessage(null)
           }, 5000)
         })
+        .catch(error => {
+          console.log('Something went wrong in adding person', error.response.data)
+          setErrorMessage(
+            `${error.response.data.msg}`
+          )
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 8000)
+        })
       //setPersons(persons.concat(personObject))
     }
 
@@ -124,7 +133,7 @@ const App = () => {
       <h2>Add new</h2>
       <PersonForm {...handlerObject} />
       <h2>Numbers</h2>
-      <Phonebook persons={persons} filter={newFilter} setPersons={setPersons} nO={notiObject}/>
+      <Phonebook persons={persons} filter={newFilter} setPersons={setPersons} nO={notiObject} />
     </div>
   )
 }
