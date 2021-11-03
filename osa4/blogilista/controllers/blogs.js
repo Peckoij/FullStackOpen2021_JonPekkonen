@@ -80,8 +80,12 @@ blogsRouter.put('/:id', async (req, res,) => {
         url: req.body.url,
         likes: req.body.likes
     }
-
-    await Blog.findByIdAndUpdate(req.params.id, updatedBlog)
+    //console.log(updatedBlog);
+    const result = await Blog.findByIdAndUpdate(req.params.id, updatedBlog, {
+        new: true
+      })
+    //console.log(result);
+    res.json(result)
 })
 
 module.exports = blogsRouter
